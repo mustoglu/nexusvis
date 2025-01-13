@@ -1,6 +1,6 @@
 ---
 layout: member
-title: "Ceyda Hızal"
+title: "aaaa"
 key: "esra-temur"
 image: assets/images/avatar/women.jpg
 position: "Literary Agent"
