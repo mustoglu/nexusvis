@@ -1,6 +1,6 @@
 ---
 layout: member
-title: "Muhammet Üstoğlu"
+title: "b"
 key: "bahadir-dogru"
 image: assets/images/avatar/man.jpg
 position: "Chief Business Officer"
