@@ -1,0 +1,193 @@
+# Site
+name: 'Mediterranean Agency'
+language: "en"
+description: 'We bring people, souls and stories together'
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/favicon/favicon.ico'
+baseurl: ''
+
+# Social Settings
+disqus: #'demowebsite'
+email: 'rights@mediterraneanagency.com'
+mailchimp-list: #'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+google_analytics: 'G-KFMVQ3WNN3'
+katalogurl: 'https://cdn.e-damla.com.tr/PUBLIC/Kataloglar/foreign-rights-catalogue-2022/index.html'
+#twitter: 'https://twitter.com/damlayayinevi'
+#facebook: 'https://www.facebook.com/damlayayinevi'
+instagram: 'https://instagram.com/mediterranean_agency'
+#youtube: 'https://www.youtube.com/c/mediterraneanagency'
+#telegram: 'https://t.me/MediterraneanAgency'
+
+pagepreview:
+  enabled: false
+  prefix: 'https://cdn.e-damla.com.tr/PUBLIC/rights_books/'
+  postfix: '/index.html'
+
+include: ["_pages"]
+permalink: /:title/
+
+
+# BuyOut Ecommerce
+buyout:
+  enabled: false
+  #buyout websites:
+  damlayayinevi: true
+  hepsiburada: true
+  dnr: true
+  idefix: true
+  kitapyurdu: true
+  odatvkitap: false
+  bkmkitap: true
+  amazontr: true
+  dkitap: true
+  trendyol: true
+  gittigidiyor: true
+
+# Plugins
+plugins: 
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-figure
+  - jekyll-gist
+ 
+# Defaults
+defaults:
+
+  # all posts
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+      avatar: /assets/images/avatar.jpg
+      
+  # all pages
+  - scope:
+      path: "_pages"
+    values:
+      layout: page
+
+  # all books
+  - scope:
+      type: "books"
+      path: "_books"
+    values:
+      layout: book
+
+  # all companys
+  - scope:
+      type: "companys"
+      path: "_companys"
+    values:
+      layout: company
+
+  # all catalogs
+  - scope:
+      type: "catalogs"
+      path: "_catalogs"
+    values:
+      layout: catalog
+
+  # all persons
+  - scope:
+      type: "persons"
+      path: "_persons"
+    values:
+      layout: person
+
+  # all illustrators
+  - scope:
+      type: "illustrators"
+      path: "_illustrators"
+    values:
+      layout: illustrator 
+      
+      # all team
+  - scope:
+      type: "team"
+      path: "_team"
+    values:
+      layout: member
+
+  # all translators
+  - scope:
+      type: "translators"
+      path: "_translators"
+    values:
+      layout: translator
+  # all slides
+  - scope:
+      type: "slides"
+      path: "_slides"
+    values:
+      author: "Anonymous"
+      
+# Syntax
+markdown: kramdown
+highlighter: rouge
+
+# XML feed
+feed:
+  collections:
+    books:
+      path: "/titles/feed.xml"
+    companys:
+      path: "/represented/feed.xml"
+    catalogs:
+      path: "/catalogs/feed.xml"
+    illustrators:
+      path: "/illustrators/feed.xml"
+
+# excerpt
+excerpt_separator: <!--more-->
+
+# Paginate
+paginate: 10
+#paginate_path: /page:num/
+paginate_path: "/blog/page:num/"
+
+# Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
+adsense: "disabled"
+adsense-data-ad-client: "ca-pub-3412143450191416"
+adsense-data-ad-slot: "1363087678"
+
+# Lazy Images ("enabled" or "disabled")
+lazyimages: "enabled"
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+collections:
+  books:
+    output: true
+    permalink: /titles/:title
+    # sort_by: 
+  companys:
+    output: true
+    permalink: /companies/:title
+  catalogs:
+    output: true
+    permalink: /catalogs/:title
+  illustrators:
+    output: true
+    permalink: /ilustrators/:title
+  translators:
+    output: true
+    permalink: /translators/:title
+  persons:
+    output: true
+    permalink: /persons/:title
+  slides: 
+    output: false
+    sort_by: order
+  team:
+    output: true
+    permalink: /team/:title/
+plugins:
+  - jekyll-sitemap
+# Exclude metadata and development time dependencies (like Grunt plugins)
+exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules]

@@ -1,0 +1,66 @@
+<style>
+    button[data-action="stop"] {
+    display: none;
+    }
+    button[data-action="start"] {
+    display: none;
+    }
+    
+</style>
+
+{% assign randomNumberdata = "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100" | split: "," %}
+{% assign randomLetterdata = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z" | split: "," %}
+
+{% assign randomNumber = randomNumberdata | sample %}
+{% assign randomLetter = randomLetterdata | sample %}
+
+<div class="container add-site-content-margin slider">
+
+        <div class="product-slider h-10" id="product-slider-{{ randomLetter }}{{ randomNumber }}">
+            {% for book in books %}
+                <div class="item">
+                    <a class="item img book-{{forloop.index}}" href="{{ book.url }}">
+                        <img class="img-fluid h-25 slider-image cover-shadow" src="/{{ book.image }}" alt="{{ book.title }}">
+                    </a>
+                </div>
+            {% endfor %}   
+        </div>
+
+<!-- tiny slider -->
+<script src="{{site.baseurl}}/assets/js/tiny-slider.js"></script>
+<script>
+  var productslider = tns({
+    container: '#product-slider-{{randomLetter}}{{randomNumber}}',
+    items: 2,
+    autoHeight: true,
+    slideBy: 'page',
+    mouseDrag: true,
+    swipeAngle: false,
+    loop: true,
+    autoplay: true,
+    speed: 600,
+    controls: false,
+    nav: false,
+    prevButton: true,
+    nextButton: true,
+    autoplayButton: false,
+    edgePadding: 10,
+        gutter: 10,
+    // pixels from bootstap document: https://getbootstrap.com/docs/4.1/layout/grid/
+    responsive: {
+        576: {
+            items: 2
+        },
+        768: {
+            items: 4
+        },
+        992: {
+            items: 5
+        },
+        1140: {
+            items: 5
+        }
+    }
+  }
+  );
+</script>
