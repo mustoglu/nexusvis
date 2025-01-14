@@ -10392,15 +10392,8 @@ a.text-dark:hover, a.text-dark:focus {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  opacity: 0;
-  transform: translateY(50px) rotate(10deg); /* Başlangıçta aşağıda ve hafif dönmüş */
-  animation: fadeInUp 0.8s ease-out forwards; /* İlk başta yavaşça yukarı kayma */
-}
-
-/* Kartlar görünür hale geldiğinde animasyon */
-.work-card.visible {
-  opacity: 1;
-  transform: translateY(0) rotate(0deg); /* Görünürken tamamen normal hale gelir */
+  opacity: 1; /* Başlangıçta görünür */
+  transform: none; /* Başlangıçta herhangi bir kayma veya dönüş yok */
 }
 
 /* Kart üzerine gelindiğinde büyüme ve gölge efekti */
@@ -10452,7 +10445,6 @@ a.text-dark:hover, a.text-dark:focus {
   transform: translateY(-5px);
 }
 
-
 /* Scroll efekti: Kartlar sayfada aşağı kaydıkça dönüş yaparak açılacak */
 @keyframes scrollReveal {
   0% {
@@ -10465,11 +10457,11 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
-/* Scroll ile açılma efekti için sınıf */
+/* Scroll ile açılma efekti için sınıf - Bu kısmı kaldırdık */
 .work-card.scroll-visible {
   opacity: 1;
-  transform: translateY(0) rotate(0deg);
-  animation: scrollReveal 1s ease-out forwards; /* Yavaşça kayma ve dönüş animasyonu */
+  transform: none;
+  animation: none; /* Artık animasyon yok */
 }
 
 /* Mobilde daha iyi görünüm */
@@ -10491,34 +10483,39 @@ a.text-dark:hover, a.text-dark:focus {
     font-size: 14px;
   }
 }
-/* Başlık altına çizgi eklemek */
-.section-title span::after {
-  content: '';
-  position: absolute;
-  bottom: -8px; /* Çizgi başlığın biraz daha altında */
-  left: 50%; /* Ortalar */
-  transform: translateX(-50%); /* Ortalamayı sağlamak için */
-  width: 60%; /* Çizgi genişliğini artırdım */
-  height: 1px; /* Daha ince çizgi */
-  background-color: #007bff; /* Çizgi rengi */
-  border-radius: 1px; /* Çizgi köşelerini yuvarlat */
-}
 
-/* Başlık için font değişikliği */
+/* Başlık için font değişikliği ve çizgi kaldırma */
 .section-title span {
-  font-family: 'Raleway', Helvetica, sans-serif; /* Raleway ve yedeği Helvetica */
+  font-family: 'Poppins', Arial, sans-serif; /* Türkçe karakterlere uyumlu Poppins fontu */
   font-size: 36px; /* Font büyüklüğü */
   font-weight: 600; /* Daha kalın başlık */
   text-transform: uppercase; /* Harfleri büyük yap */
   letter-spacing: 1px; /* Harf aralığı */
   color: #333; /* Başlık rengi */
   position: relative; /* Alt çizgi için */
-  padding-bottom: 15px; /* Çizgiyle arasındaki mesafeyi artırdım */
+  padding-bottom: 0; /* Çizgiyle arasındaki mesafeyi kaldırdım */
+  display: inline-block; /* Başlığı ortalamaya yardımcı olacak */
+  text-align: center; /* Başlık metnini ortalamaya yardımcı */
+  width: 100%; /* Ortalamayı sağlamak için tam genişlik verildi */
+  background-color: transparent; /* Başlık arka planını şeffaf yap */
+  border: none; /* Varsayılan border'ı kaldır */
+  outline: none; /* Varsayılan outline'ı kaldır */
+  box-shadow: none; /* Varsayılan box-shadow'ı kaldır */
+}
+
+/* Başlık container'ı ortalamak */
+.section-title {
+  text-align: center; /* Başlık metnini ortalar */
+  width: 100%; /* Container genişliği */
+  display: flex; /* Flexbox ile hizalamayı sağlar */
+  justify-content: center; /* Yatayda ortalar */
+  align-items: center; /* Dikeyde ortalar */
+  flex-direction: column; /* Başlık ve çizgiyi alt alta sıralar */
 }
 
 /* Responsive düzenleme */
 @media (max-width: 767px) {
-  .section-title {
-      font-size: 40px; /* Küçük ekranlar için font boyutunu biraz küçülttüm */
+  .section-title span {
+    font-size: 28px; /* Küçük ekranlar için font boyutunu küçültüyorum */
   }
 }
