@@ -10392,8 +10392,15 @@ a.text-dark:hover, a.text-dark:focus {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  opacity: 1; /* Başlangıçta görünür */
-  transform: none; /* Başlangıçta herhangi bir kayma veya dönüş yok */
+  opacity: 0;
+  transform: translateY(50px) rotate(10deg); /* Başlangıçta aşağıda ve hafif dönmüş */
+  animation: fadeInUp 0.8s ease-out forwards; /* İlk başta yavaşça yukarı kayma */
+}
+
+/* Kartlar görünür hale geldiğinde animasyon */
+.work-card.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg); /* Görünürken tamamen normal hale gelir */
 }
 
 /* Kart üzerine gelindiğinde büyüme ve gölge efekti */
@@ -10445,6 +10452,7 @@ a.text-dark:hover, a.text-dark:focus {
   transform: translateY(-5px);
 }
 
+
 /* Scroll efekti: Kartlar sayfada aşağı kaydıkça dönüş yaparak açılacak */
 @keyframes scrollReveal {
   0% {
@@ -10457,11 +10465,11 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
-/* Scroll ile açılma efekti için sınıf - Bu kısmı kaldırdık */
+/* Scroll ile açılma efekti için sınıf */
 .work-card.scroll-visible {
   opacity: 1;
-  transform: none;
-  animation: none; /* Artık animasyon yok */
+  transform: translateY(0) rotate(0deg);
+  animation: scrollReveal 1s ease-out forwards; /* Yavaşça kayma ve dönüş animasyonu */
 }
 
 /* Mobilde daha iyi görünüm */
@@ -10483,7 +10491,6 @@ a.text-dark:hover, a.text-dark:focus {
     font-size: 14px;
   }
 }
-
 /* Başlık için font değişikliği ve çizgi kaldırma */
 .section-title span {
   font-family: 'Poppins', Arial, sans-serif; /* Türkçe karakterlere uyumlu Poppins fontu */
