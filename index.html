@@ -1,252 +1,160 @@
 ---
-title: "Home"
+title: "Ana Sayfa"
 layout: default
 pagination:
-    enabled: true
+enabled: true
 description: "We work to bring people and their stories, books, souls together."
 ---
 
 
 <div class="container">
-    
-{% if page.url == "/" %}
-    
+
+    {% if page.url == "/" %}
 
 
-<!-- slider -->
-{% include slider.html %}
-<hr>
-<!-- Sticky - add sticky tag to the post you want to highlight here - tags: [sticky] -->
 
-<!-- Animasyonlu Sayaçlar -->
-<div class="counter-container">
-    <div class="counter-box">
-        <span class="counter" id="customer-counter">0</span>
-        <p>Aktif Müşteri</p>
-    </div>
-    <div class="counter-box">
-        <span class="counter" id="project-counter">0</span>
-        <p>Tamamlanan Proje</p>
-    </div>
-    <div class="counter-box">
-        <span class="counter" id="team-counter">0</span>
-        <p>Ekibimiz</p>
-    </div>
-    <div class="counter-box">
-        <span class="counter" id="years-counter">0</span>
-        <p>Yıllık Tecrübe</p>
-    </div>
-</div>
+    <!-- slider -->
+    {% include slider.html %}
+    <hr>
 
-<!-- Featured Slider -->
-<h4 class="font-weight-bold spanborder mt-2"><span>Şirket Felsefemiz</span></h4>
-{% include services.html %}
+    <!-- Animasyonlu Sayaçlar -->
+    <div class="counter-container">
+        <div class="counter-box">
+            <span class="counter" id="customer-counter">0</span>
+            <p>Aktif Müşteri</p>
+        </div>
+        <div class="counter-box">
+            <span class="counter" id="project-counter">0</span>
+            <p>Tamamlanan Proje</p>
+        </div>
+        <div class="counter-box">
+            <span class="counter" id="team-counter">0</span>
+            <p>Ekibimiz</p>
+        </div>
+        <div class="counter-box">
+            <span class="counter" id="years-counter">0</span>
+            <p>Yıllık Tecrübe</p>
+        </div>
+    </div>
 
-<hr>
-<!-- Begin post excerpts, let's highlight the first 4 posts on top -->
-<h4 class="font-weight-bold spanborder mt-2"><span>Latest News</span></h4>
-<div class="row add-site-content-margin">
-
-    <!-- latest post -->
-    {% assign latest_post = site.posts[0] %}
-    <div class="col-md-6">
-    <div class="card border-0 mb-4 box-shadow">   
-    <a href="{{site.baseurl}}{{latest_post.url}}">
-    <div class="topfirstimage" style="background-image: url({% if latest_post.image contains "://" %}{{ latest_post.image }}{% else %} {{site.baseurl}}/{{ latest_post.image}}{% endif %}); height: 200px;    background-size: cover;    background-repeat: no-repeat;"></div>     
-    </a>
-    <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
-    <h2 class="h4 font-weight-bold">
-    <a class="text-dark" href="{{site.baseurl}}{{latest_post.url}}">{{ latest_post.title }}</a>
-    </h2>
-    <p class="excerpt">
-        {{ latest_post.excerpt | strip_html | strip_newlines | truncate: 400 }}
-    </p>
-    <div>
-        <small class="d-block text-muted">
-            Category: <span class="catlist">
-                {% for category in latest_post.categories %}
-                <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/kategoriler.html#{{ category | downcase | slugify  }}">{{ category }}</a><span class="sep">, </span>
-                {% endfor %}
-                </span>                   
-        </small>
-        <small class="text-muted">
-            {{ latest_post.date | date: '%d.%m.%Y' }}
-        </small>
-    </div>
-    </div>
-    </div>
-    </div>
-    
-    <div class="col-md-6">
-        
-        <!-- second latest post -->
-        {%- assign second_post = site.posts[1] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if second_post.image %}
-                <div class="row">
-                    <div class="col-6">
-                        <a href="{{site.baseurl}}{{second_post.url}}">
-                         <img class="w-100" src="{% if second_post.image contains "://" %}{{ second_post.image }}{% else %}{{ second_post.image | absolute_url }}{% endif %}" alt="{{ second_post.title }}">
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <h2 class="mb-2 h6 font-weight-bold">
-                        <a class="text-dark" href="{{site.baseurl}}{{second_post.url}}">{{ second_post.title }}</a>
-                        </h2>
-                        <small class="d-block text-muted">
-                            Category: <span class="catlist">
-                            {% for category in second_post.categories %}
-                            <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/kategoriler.html#{{ category | downcase | slugify }}">{{ category }}</a><span class="sep">, </span>
-                            {% endfor %}
-                            </span>                   
-                        </small>
-                        <small class="text-muted">
-                            {{ second_post.date | date: '%d.%m.%Y' }}
-                        </small>
+    <!-- Sticky - add sticky tag to the post you want to highlight here - tags: [sticky] -->
+    <div class="container">
+        <h4 class="section-title mt-4 mb-3"><span>Yaptığımız İşler</span></h4>
+        <div class="row">
+            <!-- Web Tasarım Kartı -->
+            <div class="col-md-4 mb-4">
+                <div class="card work-card">
+                    <div class="card-body">
+                        <i class="fas fa-laptop-code fa-2x mb-3" style="color: #007bff;"></i>
+                        <h5 class="card-title">Web Tasarım</h5>
+                        <p class="card-text">Modern ve kullanıcı dostu web siteleri tasarlıyoruz.</p>
                     </div>
                 </div>
-                {% else %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{second_post.url}}">{{ second_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        Category: <span class="catlist">
-                        {% for category in second_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/kategoriler.html#{{ category | downcase | slugify }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ second_post.date | date: '%d.%m.%Y' }}
-                    </small>
-                </div>
-                {% endif %} 
             </div>
-        
-        <!-- third latest post -->
-        {%- assign third_post = site.posts[2] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if third_post.image %}
-                <div class="row">
-                    <div class="col-6">
-                        <a href="{{site.baseurl}}{{third_post.url}}">
-                         <img class="w-100" src="{% if third_post.image contains "://" %}{{ third_post.image }}{% else %}{{site.baseurl}}/{{ third_post.image }}{% endif %}" alt="{{ third_post.title }}">
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <h2 class="mb-2 h6 font-weight-bold">
-                        <a class="text-dark" href="{{site.baseurl}}{{third_post.url}}">{{ third_post.title }}</a>
-                        </h2>
-                        <small class="d-block text-muted">
-                            Category: <span class="catlist">
-                            {% for category in third_post.categories %}
-                            <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/kategoriler.html#{{ category | downcase | slugify }}">{{ category }}</a><span class="sep">, </span>
-                            {% endfor %}
-                            </span>                   
-                        </small>
-                        <small class="text-muted">
-                            {{ third_post.date | date: '%d.%m.%Y' }}
-                        </small>
+    
+            <!-- Video Grafik Kartı -->
+            <div class="col-md-4 mb-4">
+                <div class="card work-card">
+                    <div class="card-body">
+                        <i class="fas fa-video fa-2x mb-3" style="color: #28a745;"></i>
+                        <h5 class="card-title">Vİdeo Grafİk</h5>
+                        <p class="card-text">Etkileyici video animasyonları ve grafiklerle markanızı görsel bir şölene dönüştürüyoruz.</p>
                     </div>
                 </div>
-                {% else %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{third_post.url}}">{{ third_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        Category: <span class="catlist">
-                        {% for category in third_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/kategoriler.html#{{ category | downcase | slugify }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ third_post.date | date: '%d.%m.%Y' }}
-                    </small>
-                </div>
-                {% endif %}  
             </div>
-        
-        <!-- fourth latest post -->
-        {%- assign fourth_post = site.posts[3] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if fourth_post.image %}
-                <div class="row">
-                    <div class="col-6">
-                        <a href="{{site.baseurl}}{{fourth_post.url}}">
-                        <img class="w-100" src="{% if fourth_post.image contains "://" %}{{ fourth_post.image }}{% else %}{{site.baseurl}}/{{ fourth_post.image }}{% endif %}" alt="{{ fourth_post.title }}">
-                        </a>
+    
+            <!-- Görsel Grafik Kartı -->
+            <div class="col-md-4 mb-4">
+                <div class="card work-card">
+                    <div class="card-body">
+                        <i class="fas fa-paint-brush fa-2x mb-3" style="color: #ffc107;"></i>
+                        <h5 class="card-title">Görsel Grafİk</h5>
+                        <p class="card-text">Yaratıcı görseller ve grafiklerle markanızın görsel kimliğini güçlendiriyoruz.</p>
                     </div>
-                    <div class="col-6">
-                        <h2 class="mb-2 h6 font-weight-bold">
-                        <a class="text-dark" href="{{site.baseurl}}{{fourth_post.url}}">{{ fourth_post.title }}</a>
-                        </h2>
-                        <small class="d-block text-muted">
-                            Category: <span class="catlist">
-                            {% for category in fourth_post.categories %}
-                            <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/kategoriler.html#{{ category | downcase | slugify }}">{{ category }}</a><span class="sep">, </span>
-                            {% endfor %}
-                            </span>                   
-                        </small>
-                        <small class="text-muted">
-                            {{ fourth_post.date | date: '%d.%m.%Y' }}
-                        </small>
-                    </div>
-
                 </div>
-
-                {% else %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{fourth_post.url}}">{{ fourth_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        Category: <span class="catlist">
-                        {% for category in fourth_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/kategoriler.html#{{ category | downcase | slugify }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ fourth_post.date | date: '%d.%m.%Y' }}
-                    </small>
-                </div>
-                {% endif %}  
             </div>
-        
+    
+            <!-- Sosyal Medya Kartı -->
+            <div class="col-md-4 mb-4">
+                <div class="card work-card">
+                    <div class="card-body">
+                        <i class="fas fa-share-alt fa-2x mb-3" style="color: #17a2b8;"></i>
+                        <h5 class="card-title">Sosyal Medya</h5>
+                        <p class="card-text">Sosyal medya stratejileri ile markanızı hedef kitlenizle buluşturuyoruz.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Kartvizit Kartı -->
+            <div class="col-md-4 mb-4">
+                <div class="card work-card">
+                    <div class="card-body">
+                        <i class="fas fa-id-card fa-2x mb-3" style="color: #6610f2;"></i>
+                        <h5 class="card-title">Kartvİzİt</h5>
+                        <p class="card-text">Özel tasarım kartvizitler ile profesyonelliğinizi bir adım öne taşıyın.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Davetiye Kartı -->
+            <div class="col-md-4 mb-4">
+                <div class="card work-card">
+                    <div class="card-body">
+                        <i class="fas fa-gift fa-2x mb-3" style="color: #e83e8c;"></i>
+                        <h5 class="card-title">Davetİye</h5>
+                        <p class="card-text">Özel günleriniz için yaratıcı ve şık davetiye tasarımları sunuyoruz.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Katalog Kartı -->
+            <div class="col-md-4 mb-4">
+                <div class="card work-card">
+                    <div class="card-body">
+                        <i class="fas fa-book fa-2x mb-3" style="color: #fd7e14;"></i>
+                        <h5 class="card-title">Katalog</h5>
+                        <p class="card-text">İşletmenizi en iyi şekilde tanıtan profesyonel katalog tasarımları yapıyoruz.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Seslendirme Kartı -->
+            <div class="col-md-4 mb-4">
+                <div class="card work-card">
+                    <div class="card-body">
+                        <i class="fas fa-volume-up fa-2x mb-3" style="color: #007bff;"></i>
+                        <h5 class="card-title">Seslendİrme</h5>
+                        <p class="card-text">Profesyonel seslendirme hizmetiyle projelerinizi sesli hale getiriyoruz.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Editörlük Kartı -->
+            <div class="col-md-4 mb-4">
+                <div class="card work-card">
+                    <div class="card-body">
+                        <i class="fas fa-pen fa-2x mb-3" style="color: #6610f2;"></i>
+                        <h5 class="card-title">Edİtörlük</h5>
+                        <p class="card-text">Metin düzenleme ve içerik üretimi ile projelerinize katkı sağlıyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
-</div>
-
-<hr>
-
-<h4 class="font-weight-bold spanborder"><span>New Titles</span></h4>
-{% assign bookarray = "" | split: ',' %}
-{% assign sortedarray = "" | split: ',' %}
-    {% for book in site.books %}
-        {% assign bookarray = bookarray | push: book %}
-    {% endfor %}
-    {% assign sortedarray = bookarray | sort: 'date' %}
-
-{% for book in sortedarray limit:10 %}
-    {% assign bookarray = bookarray | push: book %}
-{% endfor %}
-
-{% assign books = bookarray %}
-{% include product-slider.html %}
-
-<hr>
-
-   
 
 
+    <!-- Featured Slider -->
+    <h4 class="font-weight-bold spanborder mt-4 mb-3"><span>Şirket Felsefemiz</span></h4>
+    {% include services.html %}
+
+    
 
 
-{% endif %} <!--endif page url is / -->
+    
+    {% endif %} <!--endif page url is / -->
 
-<script>
+    <script>
         // Sayacları ayarlayan fonksiyon
         function animateCounter(id, start, end, duration) {
             let counter = document.getElementById(id);
@@ -270,6 +178,18 @@ description: "We work to bring people and their stories, books, souls together."
             animateCounter("years-counter", 0, 25, 500); // Müşteri sayısı 1500'e ulaşacak
             animateCounter("project-counter", 0, 64, 500); // Proje sayısı 500'e ulaşacak
             animateCounter("team-counter", 0, 11, 1000); // Ekip sayısı 50'ye ulaşacak
+        });
+        // Sayfa kaydırıldığında animasyonu başlatma
+        window.addEventListener("scroll", function () {
+            let cards = document.querySelectorAll('.work-card');
+            let windowHeight = window.innerHeight;
+
+            cards.forEach(function (card) {
+                let cardTop = card.getBoundingClientRect().top;
+                if (cardTop < windowHeight - 100) {
+                    card.classList.add('visible');
+                }
+            });
         });
     </script>
 

@@ -60,7 +60,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -4789,55 +4789,130 @@ input[type="button"].btn-block {
   border-top: 0;
 }
 
-.card-body {
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  min-height: 1px;
-  padding: 1.25rem;
+/* Genel yazı ve kart stili */
+.card-body .h4, .card-body .h6 {
+  font-weight: 700;
+  color: #333;
+  transition: color 0.3s ease; /* Yazı renginde yumuşak geçiş */
 }
 
+.card-body .excerpt {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.card-body .text-muted {
+  font-size: 12px;
+  color: #777; /* Metin daha yumuşak gri renkte */
+}
+
+.topfirstimage {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  transition: transform 0.6s ease, box-shadow 0.3s ease, filter 0.3s ease; /* Yumuşak dönüş, gölge ve filtre */
+}
+
+.card-body a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.card-body a:hover {
+  color: #007bff; /* Bağlantı rengini mavi yapalım */
+  transform: translateY(-2px); /* Hoverda bağlantı biraz yukarı kayar */
+}
+
+/* Hover durumunda görselin dönmesi ve filtre efekti */
+.topfirstimage:hover {
+  transform: rotate(5deg); /* Daha hafif dönüş */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Hover ile belirginleşen gölge */
+  filter: brightness(1.2); /* Görsel parlaklığını artırma */
+}
+
+/* Hover durumunda içerik kartının hafifçe büyümesi */
+.card-body:hover {
+  transform: scale(1.05); /* Kart büyür */
+  transition: transform 0.3s ease; /* Yumuşak geçiş */
+}
+
+/* Kart başlığı ve alt başlık düzenlemeleri */
 .card-title {
   margin-bottom: 0.75rem;
+  font-size: 1.5rem; /* Başlık boyutunu büyütme */
+  font-weight: bold;
 }
 
 .card-subtitle {
   margin-top: -0.375rem;
   margin-bottom: 0;
+  color: #888; /* Alt başlık için gri ton */
 }
 
+/* Kart metni sonlandırma */
 .card-text:last-child {
   margin-bottom: 0;
 }
 
 .card-link:hover {
   text-decoration: none;
+  color: #007bff; /* Bağlantı hover rengini mavi yap */
 }
 
+/* Bağlantıların arasına boşluk ekleme */
 .card-link + .card-link {
   margin-left: 1.25rem;
 }
 
+/* Kart başlığı stili */
 .card-header {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #343a40; /* Koyu gri başlık */
+  border-bottom: 2px solid #444;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
+  font-size: 1.5rem;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
+.card-header:hover {
+  background-color: #495057; /* Hoverda koyu gri */
+  transform: scale(1.03); /* Hoverda hafif büyüme */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Daha belirgin gölge */
+  cursor: pointer;
+}
+
+.card-header h5 {
+  transition: transform 0.3s ease;
+}
+
+.card-header:hover h5 {
+  transform: translateY(-5px); /* Başlık hoverda hafifçe yukarı kayar */
+}
+
+/* İlk başlık için yuvarlatılmış köşe düzeni */
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
 
+/* Kart alt kısmı düzenlemeleri */
 .card-footer {
   padding: 0.75rem 1.25rem;
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
+  color: #555; /* Daha açık gri renk */
 }
 
+/* Kart alt kısmı sonlandırma */
 .card-footer:last-child {
   border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
 }
 
+/* Kart başlığı sekmeleri için stil */
 .card-header-tabs {
   margin-right: -0.625rem;
   margin-bottom: -0.75rem;
@@ -4845,11 +4920,7 @@ input[type="button"].btn-block {
   border-bottom: 0;
 }
 
-.card-header-pills {
-  margin-right: -0.625rem;
-  margin-left: -0.625rem;
-}
-
+/* Kart img-overlay düzenlemeleri */
 .card-img-overlay {
   position: absolute;
   top: 0;
@@ -4858,8 +4929,18 @@ input[type="button"].btn-block {
   left: 0;
   padding: 1.25rem;
   border-radius: calc(0.25rem - 1px);
+  background: rgba(0, 0, 0, 0.5); /* Görselin üst kısmına karanlık overlay */
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
+/* Görsel altına eklenmiş kart başlığı */
+.card-img:hover .card-img-overlay {
+  opacity: 1; /* Görsel üzerine gelindiğinde overlay görünür */
+}
+
+/* Görsellerin boyutları */
 .card-img,
 .card-img-top,
 .card-img-bottom {
@@ -4880,8 +4961,15 @@ input[type="button"].btn-block {
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
+/* Kartları düzenlemek için kart deki boşluklar */
 .card-deck .card {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card-deck .card:hover {
+  transform: translateY(-5px); /* Kart hoverda biraz yukarı kayar */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); /* Hoverda belirginleşen gölge */
 }
 
 @media (min-width: 576px) {
@@ -10296,3 +10384,141 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 @import url("buyout.css");
+/* Kartlar için genel stil */
+.work-card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  opacity: 0;
+  transform: translateY(50px) rotate(10deg); /* Başlangıçta aşağıda ve hafif dönmüş */
+  animation: fadeInUp 0.8s ease-out forwards; /* İlk başta yavaşça yukarı kayma */
+}
+
+/* Kartlar görünür hale geldiğinde animasyon */
+.work-card.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg); /* Görünürken tamamen normal hale gelir */
+}
+
+/* Kart üzerine gelindiğinde büyüme ve gölge efekti */
+.work-card:hover {
+  transform: translateY(-15px) rotate(5deg); /* Hoverda daha belirgin yukarı kayma ve küçük dönüş */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  background-color: #f7f9fc;
+}
+
+/* Kart başlığı stilini ayarlama */
+.work-card .card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+/* Kart başlığı hoverda renk değişimi */
+.work-card:hover .card-title {
+  color: #007bff;
+}
+
+/* Kart içeriği için açıklama */
+.work-card .card-text {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+/* Kart içeriği hoverda renk değişimi */
+.work-card:hover .card-text {
+  color: #333;
+}
+
+/* Animasyonlu Hover Efekti */
+.work-card .card-body {
+  padding: 25px;
+  text-align: center;
+  transition: background-color 0.1s ease;
+}
+
+/* Hoverda kart içeriğinin arka planı değişir */
+.work-card:hover .card-body {
+  background-color: #f0f8ff;
+  transform: translateY(-5px);
+}
+
+
+/* Scroll efekti: Kartlar sayfada aşağı kaydıkça dönüş yaparak açılacak */
+@keyframes scrollReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotate(10deg); /* Başlangıçta aşağıda ve dönmüş */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg); /* Kart tamamen görünür ve düz olur */
+  }
+}
+
+/* Scroll ile açılma efekti için sınıf */
+.work-card.scroll-visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+  animation: scrollReveal 1s ease-out forwards; /* Yavaşça kayma ve dönüş animasyonu */
+}
+
+/* Mobilde daha iyi görünüm */
+@media (max-width: 767px) {
+  .work-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .work-card .card-body {
+    padding: 20px;
+  }
+
+  .work-card .card-title {
+    font-size: 18px;
+  }
+
+  .work-card .card-text {
+    font-size: 14px;
+  }
+}
+/* Başlık altına çizgi eklemek */
+.section-title span::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; /* Çizgi başlığın biraz daha altında */
+  left: 50%; /* Ortalar */
+  transform: translateX(-50%); /* Ortalamayı sağlamak için */
+  width: 60%; /* Çizgi genişliğini artırdım */
+  height: 1px; /* Daha ince çizgi */
+  background-color: #007bff; /* Çizgi rengi */
+  border-radius: 1px; /* Çizgi köşelerini yuvarlat */
+}
+
+/* Başlık için font değişikliği */
+.section-title span {
+  font-family: 'Raleway', Helvetica, sans-serif; /* Raleway ve yedeği Helvetica */
+  font-size: 36px; /* Font büyüklüğü */
+  font-weight: 600; /* Daha kalın başlık */
+  text-transform: uppercase; /* Harfleri büyük yap */
+  letter-spacing: 1px; /* Harf aralığı */
+  color: #333; /* Başlık rengi */
+  position: relative; /* Alt çizgi için */
+  padding-bottom: 15px; /* Çizgiyle arasındaki mesafeyi artırdım */
+}
+
+/* Responsive düzenleme */
+@media (max-width: 767px) {
+  .section-title {
+      font-size: 40px; /* Küçük ekranlar için font boyutunu biraz küçülttüm */
+  }
+}
