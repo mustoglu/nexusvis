@@ -5,39 +5,41 @@ permalink: "/referanslarimiz"
 ---
 
 <div class="container">
-    <h4 class="font-weight-bold spanborder"><span>{{page.title}}</span></h4>
-    <div class="row gap-y listrecent listrecent listauthor">
+    <!-- Sayfa başlığı -->
+    <h4 class="font-weight-bold spanborder text-center">
+        <span>{{page.title}}</span>
+    </h4>
+
+    <!-- Şirketler listesi -->
+    <div class="row gap-y listrecent listauthor">
         {% for company in site.companys %}
-            <div class="col-6 col-lg-2 mb-2">
-                <div class="p-4 border rounded">
-                    <div class="row">
-                        <a href="{{ company.url }}">
-                        <div class="col-md-12 d-flex justify-content-between mb-4 mb-md-1"><img alt="{{ company.title }}" src="{{site.baseurl}}/{{ company.image }}" class="rounded" height="100%" width="100%"></div>
-                            <div class="col-md-12">
-                                
-                                <h5 class="text-dark mb-0 justify-content-center text-center"> {{ company.title }} </h5>
-                                </a>
-                                <!-- <div class="icon-block mt-3 d-flex justify-content-center">  
-                                    <div>
-                                    <a target="_blank" href="{{ company.twitter }}"><i class="fab fa-twitter text-muted" aria-hidden="true"></i></a>  &nbsp;
-                                    <a target="_blank" href="{{ company.facebook }}"><i class="fab fa-facebook text-muted" aria-hidden="true"></i></a>  &nbsp;
-                                    <a target="_blank" href="{{ company.youtube }}"><i class="fab fa-youtube text-muted" aria-hidden="true"></i></a>  &nbsp;
-                                    <a target="_blank" href="{{ company.instagram }}"><i class="fab fa-instagram text-muted" aria-hidden="true"></i></a>  &nbsp;
-                                    <a target="_blank" href="{{ company.site }}"><i class="fa fa-globe text-muted" aria-hidden="true"></i></a> &nbsp;
-                                    </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
+            <div class="col-6 col-lg-2 mb-4 p-4"> <!-- .p-4 padding sınıfı ile kutuya iç boşluk ekler -->
+                <a href="{{ company.url }}" class="d-block text-center">
+                    <!-- Şirketin görseli -->
+                    <img alt="{{ company.title }}" src="{{site.baseurl}}/{{ company.image }}" class="rounded img-fluid">
+                    <!-- Şirket adı -->
+                    <h5 class="text-dark mt-3 mb-0">{{ company.title }}</h5>
+                </a>
             </div>
         {% endfor %}
     </div>
 </div>
 
+
 <style>
     footer {
-       *position: fixed !important;
-       bottom: 0px !important;
-       width: 100vw !important;
-   }
+    position: fixed;  /* Footer'ı sayfada sabitler */
+    bottom: 0;         /* Sayfanın alt kısmına yerleştirir */
+    left: 0;           /* Sol kenara hizalar */
+    width: 100%;       /* Genişliği ekranın tamamını kaplar */
+    z-index: 999;      /* Diğer içeriklerin üstünde görünmesini sağlar */
+    background-color: #fff; /* Arka plan rengini beyaz yapar */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Gölgelendirme ekler (isteğe bağlı) */
+}
+
+/* Sayfanın içeriğinin footer'a çarpmasını engellemek için padding ekleyin */
+body {
+    padding-bottom: 60px; /* Footer yüksekliği kadar alt padding ekler */
+}
    </style>
+

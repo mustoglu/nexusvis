@@ -1,13 +1,13 @@
 ---
 layout: book
-title:  "33 Hadith With Stories"
+title:  "Yakında ürünlerimiz listelenecektir."
 
 
 publisher: damlapublishing
 authors: "Nur Dombaycı"
 illustrators: [""]
 translators: #["naci-turan","burak-dogru"]
-image: assets/images/ean/9786051748191.jpg
+image: assets/images/ean/yukleniyor.jpg
 categories: [ "Religion" ]
 tags: [ "Literature"]
 previewpage: false
@@ -17,7 +17,7 @@ genre: children
 type: fiction
 
 # Book attributes
-ean: 9786051748191
+ean: Yükleniyor....jpg
 languages: []
 page: 136
 size: "13,5x21cm"

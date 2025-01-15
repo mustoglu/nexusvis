@@ -4,14 +4,12 @@ layout: default
 permalink: "/magaza"
 ---
 
-<body>
-    
-   
-
-</body>
-
 <div class="container">
-    <h4 class="font-weight-bold spanborder"><span>New Titles</span></h4>
+    <h4 class="font-weight-bold spanborder text-center mb-4">
+        <span>Ürünler</span>
+    </h4>
+
+    <!-- Ürünler -->
     {% assign bookarray = "" | split: ',' %}
     {% assign sortedarray = "" | split: ',' %}
     {% assign sortedarray = site.books | sort: "publisher" | reverse %}
@@ -21,266 +19,97 @@ permalink: "/magaza"
     {% assign books = bookarray %}
     {% include product-slider.html %}
 
-    <style>
-        .btn-group {
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        .btn-group .btn {
-            padding: 0.55rem 0.5rem;
-        }
-        .btn-group .btn:not(:last-child) {
-            margin-right: 10px;
-        }
-        /* Yazı tipi boyutu */
-    .dropdown-menu .form-check-label {
-        font-size: 1.1rem;
-    }
-    /* İşaretleme kutusu konumu */
-    .form-check-input {
-        margin-right: 15px; 
-    }
-    </style>
-     <div class="btn-group">
-        <div class="btn-group">
-            <button type="button" class="btn btn-light dropdown-toggle font-weight-bold" style="font-size: 1.2rem;" data-toggle="dropdown">
-                Type
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li>
-                    <a class="dropdown-item" href="#" onchange="filterBooks()">
-                        <div class="form-check">
-                            <input class="form-check-input check-type" type="checkbox" value="fictionFilterBtn" id="fictionFilterBtn"  />
-                            <label class="form-check-label" for="fictionFilterBtn">Fiction</label>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#" onchange="filterBooks()">
-                        <div class="form-check">
-                            <input class="form-check-input check-type" type="checkbox" value="nonfiction" id="nonfiction"  />
-                            <label class="form-check-label" for="nonfiction">Non-Fiction</label>
-                        </div>
-                    </a>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                    <a class="dropdown-item" href="#" onclick="typeselectall()" onchange="selectAllType()" >
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="typeselectall" id="typeselectall" />
-                            <label class="form-check-label" for="typeselectall">Select All</label>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="btn-group">
-            <button type="button" class="btn btn-light dropdown-toggle font-weight-bold" style="font-size: 1.2rem;" data-toggle="dropdown">
-                Genre
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li>
-                    <a class="dropdown-item" href="#" onchange="filterBooks()">
-                        <div class="form-check">
-                            <input class="form-check-input check-genre" type="checkbox" value="adult" id="adult" />
-                            <label class="form-check-label " for="adult">Adult</label>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#" onchange="filterBooks()">
-                        <div class="form-check">
-                            <input class="form-check-input check-genre" type="checkbox" value="children" id="children"  />
-                            <label class="form-check-label" for="chidren">Children</label>
-                        </div>
-                    </a>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                    <a class="dropdown-item" href="#" onclick="genreselectall()" onchange="selectAllGenre()">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="genreselectall" id="genreselectall" />
-                            <label class="form-check-label" for="genreselectall">Select All</label>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    
-        <div class="btn-group">
-            <button type="button" class="btn btn-light dropdown-toggle font-weight-bold" style="font-size: 1.2rem;" data-toggle="dropdown">
-                Publisher
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="max-height: 200px; overflow-y: auto;">
-                {% assign usedPublishers = "" %}
-                {% for book in site.books %}
-                    {% unless usedPublishers contains book.publisher %}
-                        {% assign usedPublishers = usedPublishers | append: book.publisher | append: ";" %}
-                        {% assign company = site.companys | where: "key", book.publisher | first %}
-                        {% if company %}
-                        <li>
-                            <a class="dropdown-item" href="#" onchange="filterBooks()">
-                                <div class="form-check">
-                                    <input class="form-check-input check-publisher" type="checkbox" value="{{book.publisher}}" id="{{book.publisher}}" name="publishers[]" />
-                                    <label class="form-check-label" for="{{book.publisher}}">{{ company.title }}</label>
-                                </div>
-                            </a>
-                        </li>
-                        {% endif %}
-                    {% endunless %}
-                {% endfor %}
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                    <a class="dropdown-item" href="#" onclick="publisherselectall()" onchange="selectAllPublisher()">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="publisherselectall" id="publisherselectall"  />
-                            <label class="form-check-label" for="publisherselectall">Select All</label>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-            
-           
-    <div class="row gap-y listrecent listrecent listauthor">
+    <!-- Ürün listesi -->
+    <div class="row gap-y listrecent listauthor">
         {% assign groupbooks = site.books | group_by: "authors" | sort: "name" %}
         {% for author in groupbooks %}
             {% assign books = author.items | sort: "url" %}
             {% for book in books %}
-                <div class="col-12 col-sm-3 p-4 border rounded kitap-kutu fiction-{{book.fiction}} children-{{book.children}} publisher-{{book.publisher}}">
-                    <a class="baslik-link" href="{{ book.url }}">            
-                        <img class="cover-images" src="{{site.baseurl}}/{{ book.image }}" alt="">
-                        <h4 class="text-dark mb-0">{{ book.title }}</h4>
+                <div class="col-12 col-sm-6 col-lg-3 p-4 border rounded kitap-kutu fiction-{{book.fiction}} children-{{book.children}} publisher-{{book.publisher}}">
+                  <!-- <a class="baslik-link" href="{{ book.url }}">--> 
+                        <img class="cover-images img-fluid" src="{{ site.baseurl }}/{{ book.image }}" alt="{{ book.title }}">
+                        <h5 class="text-dark mt-2 mb-0">{{ book.title }}</h5>
                         {% for bookauthor in book.authors %}
                             {% assign siteauthor = site.authors | where:"key", bookauthor | first %}
-                            <h5 class="d-inline-block mt-2 mb-1 font-weight-normal">{{ siteauthor.title }}</h5>
+                            <h6 class="d-inline-block mt-2 mb-1 font-weight-normal">{{ siteauthor.title }}</h6>
                             {% if forloop.last == false %} - {% endif %}
                         {% endfor %}
                     </a>
-                </div>  
+                </div>
             {% endfor %}
         {% endfor %}
     </div>
 </div>
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-    var dropdownMenuButton1 = document.getElementById("dropdownMenuButton1");
-    var dropdownMenu1 = document.querySelector(".dropdown-menu1");
-
-    dropdownMenuButton1.addEventListener("mouseenter", function () {
-        dropdownMenu1.classList.add("show");
-    });
-
-    dropdownMenuButton1.addEventListener("mouseleave", function () {
-        dropdownMenu1.classList.remove("show");
-    });
-
-    dropdownMenu1.addEventListener("mouseenter", function () {
-        dropdownMenu1.classList.add("show");
-    });
-
-    dropdownMenu1.addEventListener("mouseleave", function () {
-        dropdownMenu1.classList.remove("show");
-    });
-
-    var dropdownMenuButton2 = document.getElementById("dropdownMenuButton2");
-    var dropdownMenu2 = document.querySelector(".dropdown-menu2");
-
-    dropdownMenuButton2.addEventListener("mouseenter", function () {
-        dropdownMenu2.classList.add("show");
-    });
-
-    dropdownMenuButton2.addEventListener("mouseleave", function () {
-        dropdownMenu2.classList.remove("show");
-    });
-
-    dropdownMenu2.addEventListener("mouseenter", function () {
-        dropdownMenu2.classList.add("show");
-    });
-
-    dropdownMenu2.addEventListener("mouseleave", function () {
-        dropdownMenu2.classList.remove("show");
-    });
 
 
-    //-------------------------------------------------------------------//
+<style>
 
+    /* Ürün kartları için stil */
+    .kitap-kutu {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölgeleme ekler */
+        transition: transform 0.3s ease;
+    }
 
-    
-});
-            //Select All seçildiğinde tümünü seç    (Type)
-function typeselectall() {
-    var checkboxes = document.querySelectorAll('input.check-type');
-    var selectAllCheckbox = document.getElementById('typeselectall');
-    checkboxes.forEach(function(checkbox) {
-        checkbox.checked = selectAllCheckbox.checked;
-    });
-}
-            //Select All seçildiğinde tümünü seç      (Genre)
-function genreselectall() {
-    var checkboxes = document.querySelectorAll('input.check-genre');
-    var selectAllCheckbox = document.getElementById('genreselectall');
-    checkboxes.forEach(function(checkbox) {
-        checkbox.checked = selectAllCheckbox.checked;
-    });
-}
-          //Select All seçildiğinde tümünü seç        (publisher)
-function publisherselectall() {
-    var checkboxes = document.querySelectorAll('input.check-publisher');
-    var selectAllCheckbox = document.getElementById('publisherselectall');
-    checkboxes.forEach(function(checkbox) {
-        checkbox.checked = selectAllCheckbox.checked;
-    });
-}
+    .kitap-kutu:hover {
+        transform: translateY(-5px); /* Hover efektiyle kartı yukarı kaydırır */
+    }
 
+    .cover-images {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px; /* Görsel kenarlarını yuvarlatır */
+        transition: opacity 0.3s ease;
+    }
 
+    .kitap-kutu:hover .cover-images {
+        opacity: 0.8; /* Hover efektiyle görselin opaklığını azaltır */
+    }
 
-//----------------------------------------------------------------------------------------------//
-                           
-                               //FİLTRELEME
+    h5.text-dark {
+        font-size: 1.2rem; /* Ürün başlığı boyutu */
+        font-weight: 600;
+    }
 
+    h6 {
+        font-size: 1rem; /* Yazar adı boyutu */
+        color: #555;
+    }
 
+    /* Ürünlerin bulunduğu alanın üst boşluğu */
+    .row {
+        margin-top: 20px;
+    }
 
+    /* Header, footer ve kartlar için uyumlu bir genel stil */
+    .font-weight-bold {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .spanborder span {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+    }
 
     
-
-
-// --------------------------- filtreleri url ile manupule etme: -----------------------
-
-function updateUrlParams() {
-    var urlParams = new URLSearchParams(window.location.search);
-
-    // Adult filtresi
-    var adult = document.getElementById("adult").checked;
-    urlParams.set('adult', adult);
-
-    // Children filtresi
-    var children = document.getElementById("children").checked;
-    urlParams.set('children', children);
-
-    // Nonfiction filtresi
-    var nonfiction = document.getElementById("nonfiction").checked;
-    urlParams.set('nonfiction', nonfiction);
-
-    // Fiction filtresi
-    var fiction = document.getElementById("fiction").checked;
-    urlParams.set('fiction', fiction);
-
-    // Publisher filtresi
-    var checkboxes = document.querySelectorAll('.check-publisher');
-    checkboxes.forEach(function(checkbox) {
-        var publisher = checkbox.value;
-        var isChecked = checkbox.checked;
-        urlParams.set('publisher_' + publisher, isChecked);
-    });
-
-    // Yeni URL'yi ayarla
-    var newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
-    window.history.replaceState({}, '', newUrl);
+    
+    footer {
+    position: fixed;  /* Footer'ı sayfada sabitler */
+    bottom: 0;         /* Sayfanın alt kısmına yerleştirir */
+    left: 0;           /* Sol kenara hizalar */
+    width: 100%;       /* Genişliği ekranın tamamını kaplar */
+    z-index: 999;      /* Diğer içeriklerin üstünde görünmesini sağlar */
+    background-color: #fff; /* Arka plan rengini beyaz yapar */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Gölgelendirme ekler (isteğe bağlı) */
 }
 
-
-</script>
+/* Sayfanın içeriğinin footer'a çarpmasını engellemek için padding ekleyin */
+body {
+    padding-bottom: 60px; /* Footer yüksekliği kadar alt padding ekler */
+}
+   </style>

@@ -8490,29 +8490,33 @@ button.bg-dark:focus {
   padding-left: 1rem !important;
 }
 
+/* .     sınıfı içinde padding ve hizalama */
 .p-4 {
-  padding: 1.5rem !important;
+  padding: 1.5rem !important;  /* Padding'i uygun şekilde ayarlıyoruz */
+  text-align: center;          /* İçeriği ortalar */
+  background-color: transparent; /* Arka planı şeffaf yapar */
+  border: none;                /* Kutu sınırlarını kaldırır */
+  border-radius: 0px;          /* Yuvarlak köşeleri kaldırır */
 }
 
-.pt-4,
-.py-4 {
-  padding-top: 1.5rem !important;
+/* Görselleri büyütme */
+.p-4 img.rounded {
+  width: 100%;                 /* Görseli kapsayıcıya sığdır */
+  height: auto;                /* Yüksekliği orantılı korur */
+  object-fit: cover;           /* Görselin kapsayıcıya orantılı sığmasını sağlar */
+  margin-bottom: 1rem;         /* Görselin altına boşluk ekler */
+  border-radius: 8px;          /* Yuvarlak köşeler (isteğe bağlı) */
 }
 
-.pr-4,
-.px-4 {
-  padding-right: 1.5rem !important;
+/* Başlık metnini ortalama ve altına yazı yerleştirme */
+.p-4 h5.text-dark.mb-0 {
+  margin-top: 1rem;            /* Görsel ile yazı arasına boşluk ekler */
+  font-size: 1.25rem;          /* Yazı boyutunu büyütür */
+  font-weight: 600;            /* Yazıyı kalın yapar */
+  color: #333;                 /* Yazı rengini koyu yapar */
 }
 
-.pb-4,
-.py-4 {
-  padding-bottom: 1.5rem !important;
-}
 
-.pl-4,
-.px-4 {
-  padding-left: 1.5rem !important;
-}
 
 .p-5 {
   padding: 3rem !important;

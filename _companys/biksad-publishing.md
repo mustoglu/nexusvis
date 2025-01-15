@@ -1,8 +1,8 @@
 ---
 layout: company
-title: "Biksad Publishing"
+title: "Yeğen Yapı Mimarlık"
 key: "biksadpublishing"
-image: assets/images/companies/biksad-publishing.jpg
+image: assets/images/companies/yegen-yapi.jpg
 link: 
 
 # For adding excerpt add <!--more--> and break the line
