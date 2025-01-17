@@ -10530,3 +10530,80 @@ a.text-dark:hover, a.text-dark:focus {
     font-size: 28px; /* Küçük ekranlar için font boyutunu küçültüyorum */
   }
 }
+
+/* Genel Ayarlar */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa; /* Açık gri arka plan */
+  color: #333;
+}
+
+/* Bölüm Başlıkları */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #007bff; /* Mavi renk */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+/* Kart stili */
+.card {
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Hover efekti: Kart yukarı doğru hareket eder */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 2rem;
+  background-color: #fff;
+}
+
+/* Kart başlığı */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.card-text {
+  font-size: 3rem;
+  color: #666; /* Daha yumuşak gri */
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+/* Kart başlıklarındaki metin ve alt başlıklar */
+.card-title, .card-text {
+  text-align: center;
+}
+
+/* İkonlar */
+.card-body i {
+  font-size: 3rem;
+  color: #007bff; /* Mavi ikon */
+  transition: color 0.3s ease;
+}
+
+.card-body i:hover {
+  color: #0056b3; /* Hover efekti: İkon rengi değişir */
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem; /* Mobilde başlık daha küçük */
+  }
+
+  .card {
+    margin-bottom: 30px;
+  }
+}
+
+
