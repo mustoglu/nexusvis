@@ -2,22 +2,82 @@
 title: "Blog"
 layout: default
 pagination:
-    enabled: true
+enabled: true
 ---
+<div class="instagram-embed-container">
+  <blockquote 
+    class="instagram-media" 
+    data-instgrm-permalink="https://www.instagram.com/p/DFAb4Ffi1-Y/?utm_source=ig_embed&utm_campaign=loading" 
+    data-instgrm-version="14">
+    <a href="https://www.instagram.com/p/DFAb4Ffi1-Y/?utm_source=ig_embed&utm_campaign=loading" target="_blank">
+      Nexusvis Agency (@nexusvistanbul) tarafından paylaşılan bir gönderi
+    </a>
+  </blockquote>
+</div>
+
+<script async src="//www.instagram.com/embed.js"></script>
 
 <style>
-  footer {
-  position: fixed;  /* Footer'ı sayfada sabitler */
-  bottom: 0;         /* Sayfanın alt kısmına yerleştirir */
-  left: 0;           /* Sol kenara hizalar */
-  width: 100%;       /* Genişliği ekranın tamamını kaplar */
-  z-index: 999;      /* Diğer içeriklerin üstünde görünmesini sağlar */
-  background-color: #fff; /* Arka plan rengini beyaz yapar */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Gölgelendirme ekler (isteğe bağlı) */
-}
+  .instagram-embed-container {
+    max-width: 540px;
+    margin: auto;
+    margin-bottom: 100px;  /* Footer için boşluk bırakıyoruz */
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-/* Sayfanın içeriğinin footer'a çarpmasını engellemek için padding ekleyin */
-body {
-  padding-bottom: 60px; /* Footer yüksekliği kadar alt padding ekler */
-}
- </style>
+  .instagram-media {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .instagram-media a {
+    text-decoration: none;
+    color: #3897f0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+  }
+</style>
+
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  #page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #content-wrap {
+    flex: 1;  /* Ana içerik alanı kalan tüm alanı kaplar */
+  }
+
+  footer {
+    margin-top: auto;  /* Footer'ı en alta iter */
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+
+  
+ 
+
+<!-- Eğer varsa, fazladan olan yapıları kaldıralım -->
+<!-- Kaldırılacak tekrarlanan içerikler:
+- Fazladan page-container
+- Tekrarlanan footer
+- Tekrarlanan include'lar
+-->
