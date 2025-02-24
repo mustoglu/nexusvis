@@ -4,112 +4,600 @@ layout: default
 permalink: "/magaza"
 ---
 
-<div class="container">
-    <h4 class="font-weight-bold spanborder text-center mb-4">
-        <span>Ürünler</span>
-    </h4>
 
-    <!-- Ürünler -->
-    {% assign bookarray = "" | split: ',' %}
-    {% assign sortedarray = "" | split: ',' %}
-    {% assign sortedarray = site.books | sort: "publisher" | reverse %}
-    {% for book in sortedarray limit:10 %}
-        {% assign bookarray = bookarray | push: book %}
-    {% endfor %}
-    {% assign books = bookarray %}
-    {% include product-slider.html %}
+<section class="plans__container">
+    <div class="plans">
+        <div class="plansHero">
+            <h1 class="plansHero__title">Hizmetler & Fiyatlandırma</h1>
+            <p class="plansHero__subtitle">Sözleşme yok. Sürpriz ücret yok.</p>
+        </div>
+        <div class="planItem__container">
 
-    <!-- Ürün listesi -->
-    <div class="row gap-y listrecent listauthor">
-        {% assign groupbooks = site.books | group_by: "authors" | sort: "name" %}
-        {% for author in groupbooks %}
-            {% assign books = author.items | sort: "url" %}
-            {% for book in books %}
-                <div class="col-12 col-sm-6 col-lg-3 p-4 border rounded kitap-kutu fiction-{{book.fiction}} children-{{book.children}} publisher-{{book.publisher}}">
-                  <!-- <a class="baslik-link" href="{{ book.url }}">--> 
-                        <img class="cover-images img-fluid" src="{{ site.baseurl }}/{{ book.image }}" alt="{{ book.title }}">
-                        <h5 class="text-dark mt-2 mb-0">{{ book.title }}</h5>
-                        {% for bookauthor in book.authors %}
-                            {% assign siteauthor = site.authors | where:"key", bookauthor | first %}
-                            <h6 class="d-inline-block mt-2 mb-1 font-weight-normal">{{ siteauthor.title }}</h6>
-                            {% if forloop.last == false %} - {% endif %}
-                        {% endfor %}
-                    </a>
+
+            <!-- Pro planlar başlangıç -->
+            <div class="planItem planItem--pro">
+                <div class="card">
+                    <div class="card__header">
+                        <i class="fas fa-laptop-code fa-2x mb-3"></i>
+                        <h2>Web Tasarım</h2>
+                        <div class="card__label label label--temel">Temel</div>
+                    </div>
+                    <div class="card__desc">Profesyonel, modern ve kullanıcı dostu web siteleri ile işletmenizi dijitale taşıyoruz.</div>
                 </div>
-            {% endfor %}
-        {% endfor %}
-    </div>
-</div>
 
+                <div class="price">6.000₺<span></span></div>
+
+                <ul class="featureList">
+                    <li>Tek Sayfa (LandingPage)</li>
+                    <li>%100 Mobil Uyumlu</li>
+                    <li>%95-100 SEO Uyumlu</li>
+                    <li>Domain</li>
+                    <li>Hosting</li>
+                    <li>SSL Sertifikası</li>
+                    <li class="disabled">Blog Sayfası</li>
+                    <li class="disabled">6 Ay Ücretsiz Danışmanlık</li>
+                    <li class="disabled">6 Ay Ücretsiz Veri Yönetimi</li>
+                    <li class="disabled">İhtiyaçlarınıza Özel Modüller</li>
+                </ul>
+
+                <a href="https://wa.me/905384006249" target="_blank" class="button button--pink">Whatsapp İletişim</a>  
+            </div>
+            <div class="planItem planItem--pro">
+                <div class="card">
+                    <div class="card__header">
+                        <i class="fas fa-laptop-code fa-2x mb-3"></i>
+                        <h2>Web Tasarım</h2>
+                        <div class="card__label label label--standart">Standart</div>
+                    </div>
+                    <div class="card__desc">Profesyonel, modern ve kullanıcı dostu web siteleri ile işletmenizi dijitale taşıyoruz.</div>
+                </div>
+
+                <div class="price">8.000₺<span></span></div>
+
+                <ul class="featureList">
+                    <li>Kurumsal Site (1-4 Sayfa)</li>
+                    <li>%100 Mobil Uyumlu</li>
+                    <li>%95-100 SEO Uyumlu</li>
+                    <li>Domain</li>
+                    <li>Hosting</li>
+                    <li>SSL Sertifikası</li>
+                    <li>Blog Sayfası</li>
+                    <li class="disabled">6 Ay Ücretsiz Danışmanlık</li>
+                    <li class="disabled">6 Ay Ücretsiz Veri Yönetimi</li>
+                    <li class="disabled">İhtiyaçlarınıza Özel Modüller</li>
+                </ul>
+
+                <a href="https://wa.me/905384006249" target="_blank" class="button button--pink">Whatsapp İletişim</a>    
+            </div>
+            <div class="planItem planItem--pro">
+                <div class="card">
+                    <div class="card__header">
+                        <i class="fas fa-laptop-code fa-2x mb-3"></i>
+                        <h2>Web Tasarım</h2>
+                        <div class="card__label label label--premium">Premium</div>
+                    </div>
+                    <div class="card__desc">Profesyonel, modern ve kullanıcı dostu web siteleri ile işletmenizi dijitale taşıyoruz.</div>
+                </div>
+
+                <div class="price">12.000₺<span></span></div>
+
+                <ul class="featureList">
+                    <li>Kurumsal Site (1-10 Sayfa)</li>
+                    <li>Özel Ön Yüz Tasarımı</li>
+                    <li>%100 Mobil Uyumlu</li>
+                    <li>Blog Sayfası</li>
+                    <li>%95-100 SEO Uyumlu</li>
+                    <li>Domain</li>
+                    <li>Hosting</li>
+                    <li>SSL Sertifikası</li>
+                    <li>6 ay Ücretsiz Danışmanlık</li>
+                    <li>6 ay Ücretsiz Veri Yönetimi</li>
+                    <li>İhtiyaçlarınıza Özel Modüller</li>
+                </ul>
+
+                <a href="https://wa.me/905384006249" target="_blank" class="button button--pink">Whatsapp İletişim</a>
+            </div>
+            <div class="planItem planItem--pro">
+                <div class="card">
+                    <div class="card__header">
+                        <i class="fas fa-share-alt fa-2x mb-3"></i>
+                        <h2>Medya Yönetimi</h2><br>
+                        <div class="card__label label label--temel">Temel</div>
+                    </div>
+                    <div class="card__desc">Markanızı dijital dünyada güçlendiriyoruz.</div>
+                </div>
+
+                <div class="price">4.000₺<span>/ aylık</span></div>
+
+                <ul class="featureList">
+                    <li>Hesap Kurulumu</li>
+                    <li>Hesap Yönetimi</li>
+                    <li>Kurumsal Kreatiflerinin Hazırlanması</li>
+                    <li>Raporlama</li>
+                    <li class="disabled">İçerik Üretimi</li>
+                    <li class="disabled">Haftalık 3 Adet Post</li>
+                    <li class="disabled">Haftalık 3 Adet Story</li>
+                    <li class="disabled">META Reklam Yönetimi</li>
+                    <li class="disabled">İçerik Planlaması</li>
+                    <li class="disabled">Hedef Kitle Analizi</li>
+                    <li class="disabled">Strateji Oluşturma </li>
+                </ul>
+
+                <a href="https://wa.me/905384006249" target="_blank" class="button button--pink">Whatsapp İletişim</a>
+            </div>
+            <div class="planItem planItem--pro">
+                <div class="card">
+                    <div class="card__header">
+                        <i class="fas fa-share-alt fa-2x mb-3"></i>
+                        <h2>Medya Yönetimi</h2>
+                        <div class="card__label label label--standart">Standart</div>
+                    </div>
+                    <div class="card__desc">Markanızı dijital dünyada güçlendiriyoruz.</div>
+                </div>
+
+                <div class="price">6.000₺<span>/ aylık</span></div>
+
+                <ul class="featureList">
+                    <li>Hesap Kurulumu</li>
+                    <li>Hesap Yönetimi</li>
+                    <li>Kurumsal Kreatiflerinin Hazırlanması</li>
+                    <li>İçerik Üretimi</li>
+                    <li>Haftalık 3 Adet Post</li>
+                    <li>Haftalık 3 Adet Story</li>
+                    <li>Raporlama</li>
+                    <li class="disabled">META Reklam Yönetimi</li>
+                    <li class="disabled">Hedef Kitle Analizi</li>
+                    <li class="disabled">Strateji Oluşturma</li>
+                    <li class="disabled">İçerik Planlaması</li>
+                </ul>
+
+                <a href="https://wa.me/905384006249" target="_blank" class="button button--pink">Whatsapp İletişim</a>
+            </div>
+            <div class="planItem planItem--pro">
+                <div class="card">
+                    <div class="card__header">
+                        <i class="fas fa-share-alt fa-2x mb-3"></i>
+                        <h2>Medya Yönetimi</h2>
+                        <div class="card__label label label--premium">Premium</div>
+                    </div>
+                    <div class="card__desc">Markanızı dijital dünyada güçlendiriyoruz.</div>
+                </div>
+
+                <div class="price">8.000₺<span>/ aylık</span></div>
+
+                <ul class="featureList">
+                    <li>Hesap Kurulumu</li>
+                    <li>Hesap Yönetimi</li>
+                    <li>META Reklam Yönetimi</li>
+                    <li>Kurumsal Kreatiflerinin Hazırlanması</li>
+                    <li>İçerik Üretimi</li>
+                    <li>Haftalık 3 Adet Post</li>
+                    <li>Haftalık 3 Adet Story</li>
+                    <li>Hedef Kitle Analizi</li>
+                    <li>Strateji Oluşturma</li>
+                    <li>İçerik Planlaması</li>
+                    <li>Raporlama</li>
+                </ul>
+
+                <a href="https://wa.me/905384006249" target="_blank" class="button button--pink">Whatsapp İletişim</a>
+            </div>
+            <div class="planItem planItem--pro">
+                <div class="card">
+                    <div class="card__header">
+                        <i class="fas fa-book-open fa-2x mb-3"></i>
+                        <h2>Dijital Katalog</h2>
+                        <div class="card__label label label--premium">Premium</div>
+                    </div>
+                    <div class="card__desc">Müşterinize ulaşmak artık çok kolay.</div>
+                </div>
+
+                
+                <div class="price">Teklif Alın<span></span></div>
+
+                <ul class="featureList">
+                    <li>Online</li>
+                    <li>QR Kod ile Kolay Erişim</li>
+                    <li>Her Zaman Cebinde</li>
+                    <li>Hızlı Güncelleme</li>
+                    <li>Düşük Maliyet</li>
+                    <li>Geniş Kitleye Ulaşım</li>
+                    <li>Mobil ve Web Uyumlu</li>
+                    <li>SEO Uyumlu</li>
+                    <li>Kolay Paylaşım</li>
+                    <li>Daima Güncel</li>
+                    <li>Dinamik Yapı</li>
+                    <li>Çevre Dostu</li>
+                    
+                </ul>
+
+                <a href="https://wa.me/905384006249" target="_blank" class="button button--pink">Teklif Al</a>
+            </div>
+
+            <!-- ... 8 adet daha aynı plan ... -->
+
+
+
+
+
+        </div>
+    </div>
+</section>
+
+<div style="margin-bottom: 120px;"></div>
+
+<footer></footer>
 
 <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
-    /* Ürün kartları için stil */
-    .kitap-kutu {
-        position: relative;
-        display: flex;
+    :root {
+        --baseColor: #656c7c;
+        --baseSize: 16px;
+        --baseLineHeight: 1.5;
+        --fontFamily: Inter, sans-serif;
+        --pink: #4c76ea;
+        --pinkLight: #ffecf0;
+        --blue: #1769ff;
+        --redTick: url("data:image/svg+xml,%3Csvg width='18' height='14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.552.134 5.717 10.97 1.448 6.701 0 8.149l5.717 5.717L18 1.583 16.552.134Z' fill='%23EA455F'/%3E%3C/svg%3E%0A");
+        --whiteTick: url("data:image/svg+xml,%3Csvg width='18' height='14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.552.134 5.717 10.97 1.448 6.701 0 8.149l5.717 5.717L18 1.583 16.552.134Z' fill='%23FFFFFF'/%3E%3C/svg%3E%0A");
+        --close: url("data:image/svg+xml,%3Csvg width='18' height='18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 1.414 16.586 0 9 7.586 1.414 0 0 1.414 7.586 9 0 16.586 1.414 18 9 10.414 16.586 18 18 16.586 10.414 9 18 1.414Z' fill='%23B1B8C9'/%3E%3C/svg%3E");
+        --entpIcon: url("data:image/svg+xml,%3Csvg width='42' height='42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.813 11.077 21 1.155l17.187 9.922v19.846L21 40.845 3.813 30.923V11.077Z' stroke='%23fff' stroke-width='2'/%3E%3Ccircle cx='21' cy='21' r='8' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        color: var(--baseColor);
+        font-family: var(--fontFamily);
+        font-size: var(--baseSize);
+        line-height: var(--baseLineHeight);
+    }
+    &.disabled {
+      --color: #b1b8c9;
+      --height: 1.125rem;
+      --icon: var(--close);
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .plans {
+        width: 96%;
+        max-width: 1128px;
+        margin: 0 auto;
+    }
+
+    .plans__container {
+        padding: 1rem 0 2rem;
+    }
+
+    .plansHero {
+        text-align: center;
+        padding: 5rem 0 4.5rem;
+        line-height: 1.21;
+    }
+
+    .plansHero__title {
+        font-weight: 700;
+        font-size: 2rem;
+        margin: 0 0 1rem 0;
+        color: #000;
+    }
+
+    .plansHero__subtitle {
+        margin: 0;
+    }
+
+    .planItem {
+        --border: 1px solid #e6e6e6;
+        --bgColor: #fff;
+        --boxShadow: none;
+        --titleColor: #000;
+        --descColor: var(--baseColor);
+        background-color: var(--bgColor);
+        border: var(--border);
+        border-radius: 1rem;
+        box-shadow: var(--boxShadow);
+        padding: 1.5rem 1rem;
+        display: inline-flex;
         flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölgeleme ekler */
+        transition: none;
+    }
+
+    .planItem__container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 sütunlu grid */
+        grid-template-rows: repeat(3, 1fr);
+        /* 3 satırlı grid */
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .planItem .price {
+        --priceMargin: 2rem 0;
+    }
+
+    .planItem--pro {
+        --border: 0;
+        --boxShadow: 0px 14px 30px rgba(204, 204, 204, 0.32);
+    }
+
+    .planItem--pro .label {
+        --labelBg: #00000081;
+        --labelColor: #fff;
+    }
+
+    .planItem--entp {
+        --bgColor: var(--blue);
+    }
+
+    .planItem--entp .card {
+        --titleColor: #fff;
+        --descColor: rgb(255 255 255 / 80%);
+    }
+
+    .planItem--entp .card__icon {
+        background-image: var(--entpIcon);
+        background-size: cover;
+    }
+
+    .planItem--entp .price,
+    .planItem--entp .featureList {
+        --color: #fff;
+    }
+
+    .planItem--entp .featureList {
+        --icon: var(--whiteTick);
+    }
+
+    .planItem .button {
+        margin-top: auto;
+    }
+
+    .button {
+        --bgColor: var(--pinkLight);
+        --color: var(--pink);
+        --shadowColor: rgb(234 76 137 / 30%);
+        --outline: var(--pink);
+        border-radius: 0.5rem;
+        display: block;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border: 0;
+        line-height: inherit;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        background-color: var(--bgColor);
+        color: var(--color);
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: none;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .button--pink {
+        --bgColor: var(--pink);
+        --color: #fff;
+        --shadowColor: rgb(234 76 137 / 50%);
+    }
+
+    .button--white {
+        --bgColor: #fff;
+        --shadowColor: rgb(255 255 255 / 30%);
+        --outline: #fff;
+    }
+
+    .button:hover {
+        box-shadow: none;
+    }
+
+    .button:focus-visible {
+        outline-offset: 2px;
+        outline: 2px solid var(--outline);
+    }
+
+    .card {
+        --titleColor: #000;
+        --descColor: var(--baseColor);
+        border: none;
+        box-shadow: none;
+        transition: none;
+        transform: none;
+    }
+
+    .card__header {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .card__icon {
+        width: 2.625rem;
+        height: 2.625rem;
         transition: transform 0.3s ease;
     }
 
-    .kitap-kutu:hover {
-        transform: translateY(-5px); /* Hover efektiyle kartı yukarı kaydırır */
-    }
-
-    .cover-images {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px; /* Görsel kenarlarını yuvarlatır */
-        transition: opacity 0.3s ease;
-    }
-
-    .kitap-kutu:hover .cover-images {
-        opacity: 0.8; /* Hover efektiyle görselin opaklığını azaltır */
-    }
-
-    h5.text-dark {
-        font-size: 1.2rem; /* Ürün başlığı boyutu */
-        font-weight: 600;
-    }
-
-    h6 {
-        font-size: 1rem; /* Yazar adı boyutu */
-        color: #555;
-    }
-
-    /* Ürünlerin bulunduğu alanın üst boşluğu */
-    .row {
-        margin-top: 20px;
-    }
-
-    /* Header, footer ve kartlar için uyumlu bir genel stil */
-    .font-weight-bold {
+    .card h2 {
+        color: var(--titleColor);
         font-size: 1.5rem;
-        font-weight: bold;
+        line-height: 1.2;
+        font-weight: 400;
+        margin: 0;
+        flex-grow: 1;
     }
 
-    .spanborder span {
-        border-bottom: 2px solid #007bff;
-        padding-bottom: 5px;
+    .card__desc {
+        margin: 1.5rem 0 0;
+        color: var(--descColor);
+        font-size: 0.9rem;
     }
 
-    
-    
+    .label {
+        --labelColor: var(--baseColor);
+        --labelBg: #e5e5e5;
+        font-weight: 600;
+        line-height: 1.25;
+        font-size: 1rem;
+        text-align: center;
+        padding: 0.625rem 1.125rem;
+        border-radius: 2rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: var(--labelBg);
+        color: var(--labelColor);
+    }
+
+    .price {
+        --color: #000;
+        --priceMargin: 0;
+        display: flex;
+        color: var(--color);
+        align-items: center;
+        gap: 0.5625rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin: var(--priceMargin);
+    }
+
+    .price span {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--baseColor);
+    }
+
+    .featureList {
+        --color: #000;
+        --icon: var(--redTick);
+        --height: 0.875rem;
+        margin: 0 0 1.5rem;
+        padding: 0;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .featureList li {
+        color: var(--color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .featureList li:before {
+        content: "";
+        background-image: var(--icon);
+        background-size: cover;
+        display: block;
+        width: 1.125rem;
+        height: var(--height);
+    }
+
+    .featureList li:last-child {
+        margin-bottom: 0;
+    }
+
+    .featureList li.disabled {
+        --color: #b1b8c9;
+        --height: 1.125rem;
+        --icon: var(--close);
+    }
+
+    .symbol {
+        --big: 2.625rem;
+        --small: 1.5rem;
+        --radius: 0.25rem;
+        border: 2px solid var(--blue);
+        width: var(--big);
+        height: var(--big);
+        border-radius: var(--radius);
+        position: relative;
+    }
+
+    .symbol--rounded {
+        --radius: 2rem;
+    }
+
+    .symbol:after {
+        content: "";
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        border: 2px solid var(--pink);
+        width: var(--small);
+        height: var(--small);
+        border-radius: var(--radius);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @media screen and (max-width: 768px) {
+        .planItem__container {
+            grid-template-columns: 1fr;
+            /* Mobilde tek sütun */
+            grid-template-rows: auto;
+        }
+    }
+
+    @media screen and (min-width: 641px) and (max-width: 768px) {
+        :root {
+            --baseSize: 12px;
+        }
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1080px) {
+        :root {
+            --baseSize: 14px;
+        }
+    }
+
     footer {
-    position: fixed;  /* Footer'ı sayfada sabitler */
-    bottom: 0;         /* Sayfanın alt kısmına yerleştirir */
-    left: 0;           /* Sol kenara hizalar */
-    width: 100%;       /* Genişliği ekranın tamamını kaplar */
-    z-index: 999;      /* Diğer içeriklerin üstünde görünmesini sağlar */
-    background-color: #fff; /* Arka plan rengini beyaz yapar */
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Gölgelendirme ekler (isteğe bağlı) */
-}
+        position: relative;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        background-color: #fff;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-/* Sayfanın içeriğinin footer'a çarpmasını engellemek için padding ekleyin */
-body {
-    padding-bottom: 60px; /* Footer yüksekliği kadar alt padding ekler */
-}
-   </style>
+    .planItem:hover,
+    .planItem:hover .card__icon,
+    .button--pink:hover,
+    .button--white:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* Label renk sınıfları */
+    .label--temel {
+        background-color: #4CAF50;  /* Yeşil */
+        color: white;
+    }
+
+    .label--standart {
+        background-color: #FF9800;  /* Turuncu */
+        color: white;
+    }
+
+    .label--premium {
+        background-color: #FFD700;  /* Altın */
+        color: #000;
+    }
+
+    .label--pro {
+        background-color: #FF9800;  /* Turuncu */
+        color: white;
+    }
+</style>
