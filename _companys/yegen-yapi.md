@@ -1,7 +1,7 @@
 ---
 layout: company
 title: "Yeğen Yapı Mimarlık"
-key: "biksadpublishing"
+key: yegenyapi"
 image: assets/images/companies/yegen-yapi.jpg
 link: 
 
