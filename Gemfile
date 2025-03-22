@@ -10,6 +10,14 @@ ruby RUBY_VERSION
 
 # If you have any plugins, put them here!
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
+# Required dependencies
+gem "jekyll", "~> 4.3.2"
+gem "csv", "~> 3.2.7"
+gem "base64"
+gem "bigdecimal"
+gem "webrick"
+
 group :jekyll_plugins do
     gem 'jekyll-feed'
     gem 'jekyll-sitemap'
